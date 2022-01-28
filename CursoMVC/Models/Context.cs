@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AngleSharp.Dom;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CursoMVC.Models
 {
@@ -12,5 +14,9 @@ namespace CursoMVC.Models
             optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=CursoMVC;Trusted_Connection=True");
         }
 
+        public virtual void SetModified(Object entity)
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
     }
 }
